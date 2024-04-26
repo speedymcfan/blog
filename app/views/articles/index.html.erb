@@ -1,0 +1,26 @@
+<div class="page-container">    
+    <div class="page-item">
+        <h1>Article Archive</h1>
+
+        Your blog has <%= Article.public_count %> articles and counting!
+    </div>
+    <div class="page-item">
+        <div class="flex-container">
+            <ul class="no-bullets">
+            <% @articles.each do |article| %>
+                <% unless article.archived? %>
+                    <div class="flex-box">
+                        <li>
+                            <%= link_to article.title, article %>
+                        </li>
+                    </div>
+                <% end %>
+            <% end %>
+            </ul>
+        </div>
+
+        <div class="flex-box">
+            <%= link_to "New Article", new_article_path %>
+        </div>
+    </div>
+</div>
